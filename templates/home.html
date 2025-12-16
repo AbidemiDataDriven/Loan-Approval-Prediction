@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loan Prediction Dashboard</title>
+
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #0b0b0b, #1a1a1a);
+            padding: 40px;
+            color: #e0e0e0;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: auto;
+            background: #111;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 0 25px rgba(255,0,0,0.15);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff2c2c;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: 600;
+            margin-top: 16px;
+            display: block;
+            color: #ccc;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 11px;
+            margin-top: 6px;
+            background: #1c1c1c;
+            border: 1px solid #333;
+            color: #fff;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #ff2c2c;
+            box-shadow: 0 0 8px rgba(255,44,44,0.4);
+        }
+
+        button {
+            margin-top: 30px;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #ff2c2c, #c30000);
+            color: white;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 6px;
+            letter-spacing: 1px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(255,0,0,0.4);
+        }
+
+        .result-box {
+            margin-top: 35px;
+            padding: 22px;
+            text-align: center;
+            font-size: 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        .approved {
+            background: linear-gradient(135deg, #0f3d1c, #145a2a);
+            color: #5cff9a;
+            border: 1px solid #2aff88;
+        }
+
+        .rejected {
+            background: linear-gradient(135deg, #3d0f0f, #5a1414);
+            color: #ff6b6b;
+            border: 1px solid #ff2c2c;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 13px;
+            color: #888;
+        }
+
+        footer a {
+            color: #ff2c2c;
+            text-decoration: none;
+            margin: 0 6px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Loan Approval Prediction</h1>
+    <div class="subtitle">
+        AI-powered Credit Risk Assessment Dashboard
+    </div>
+
+    <form method="POST">
+
+        <label>Age</label>
+        <input type="text" name="person_age" required>
+
+        <label>Gender</label>
+        <select name="person_gender">
+            <option value="0">Female</option>
+            <option value="1">Male</option>
+        </select>
+
+        <label>Education</label>
+        <select name="person_education">
+            <option value="0">Associate</option>
+            <option value="1">Bachelor</option>
+            <option value="2">Doctorate</option>
+            <option value="3">High School</option>
+            <option value="4">Master</option>
+        </select>
+
+        <label>Income</label>
+        <input type="text" name="person_income" required>
+
+        <label>Employment Experience (years)</label>
+        <input type="text" name="person_emp_exp" required>
+
+        <label>Home Ownership</label>
+        <select name="person_home_ownership">
+            <option value="0">Mortgage</option>
+            <option value="1">Other</option>
+            <option value="2">Rent</option>
+            <option value="3">Own</option>
+        </select>
+
+        <label>Loan Amount</label>
+        <input type="text" name="loan_amnt" required>
+
+        <label>Loan Intent</label>
+        <select name="loan_intent">
+            <option value="0">Debt Consolidation</option>
+            <option value="1">Education</option>
+            <option value="2">Home Improvement</option>
+            <option value="3">Medical</option>
+            <option value="4">Personal</option>
+            <option value="5">Venture</option>
+        </select>
+
+        <label>Interest Rate</label>
+        <input type="text" name="loan_int_rate" required>
+
+        <label>Loan % of Income</label>
+        <input type="text" name="loan_percent_income" required>
+
+        <label>Credit History Length</label>
+        <input type="text" name="cb_person_cred_hist_length" required>
+
+        <label>Credit Score</label>
+        <input type="text" name="credit_score" required>
+
+        <label>Previous Loan Default</label>
+        <select name="previous_loan_defaults_on_file">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+
+        <button type="submit">PREDICT LOAN OUTCOME</button>
+    </form>
+
+    {% if result %}
+        <div class="result-box {{ result }}">
+            LOAN APPLICATION {{ result | upper }}
+        </div>
+    {% endif %}
+
+    <footer>
+        <strong>Abidemi Avoseh</strong><br>
+        Machine Learning Engineer & Data Scientist<br>
+        <a href="https://github.com/AbidemiDataDriven" target="_blank">GitHub</a> |
+        <a href="https://www.linkedin.com/in/abidemi-avoseh-811b7615a/" target="_blank">LinkedIn</a> |
+        <a href="https://x.com/avoseh_emma" target="_blank">Twitter</a>
+    </footer>
+</div>
+
+</body>
+</html>
+
+
