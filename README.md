@@ -80,6 +80,9 @@ loan-prediction-app/
    * `1` → Approved
    * `0` → Rejected
 5. Result is rendered back to the UI
+<img width="1920" height="1080" alt="Screenshot 2026-06-08 at 2 20 23 AM" src="https://github.com/user-attachments/assets/4a5f0295-4490-4c3f-b766-e396f48bef4d" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d05b2ace-0010-44b2-81c5-ded63ce19550" />
 
 ---
 
