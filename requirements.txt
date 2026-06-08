@@ -5,3 +5,6 @@ xgboost
 numpy
 pandas
 gunicorn
+seaborn
+matplotlib
+plotly

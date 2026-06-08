@@ -134,6 +134,11 @@ Machine Learning Engineer & Data Scientist
 
 ---
 
+
+## loan Prediction workflow
+/Users/abidemiavoseh/Desktop/Screenshot 2025-12-16 at 12.58.44 PM.png
+/Users/abidemiavoseh/Desktop/Screenshot 2025-12-16 at 12.59.02 PM.png
+
 ![Python](https://img.shields.io/badge/Python-3.8+-blue?logo=python&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-Web%20Framework-black?logo=flask&logoColor=white)
 ![XGBoost](https://img.shields.io/badge/XGBoost-ML%20Model-orange)
